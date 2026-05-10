@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>F1 Sıralamalar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">F1 HUB</h1>
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="champions.html">Şampiyonlar</a></li>
+          <li><a href="grid.html">Sıralamalar</a></li>
+          <li><a href="tracks.html">Takvim</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="standings-page">
+      <div class="section-title">Sezon Sıralamaları</div>
+
+      <div class="controls">
+        <select
+          id="seasonSelect"
+          class="year-select"
+          onchange="loadStandings()"
+        ></select>
+        <div class="tab-group">
+          <button
+            class="tab-btn active"
+            id="tab-drivers"
+            onclick="switchTab('drivers')"
+          >
+            🧑‍✈️ Sürücüler
+          </button>
+          <button
+            class="tab-btn"
+            id="tab-constructors"
+            onclick="switchTab('constructors')"
+          >
+            🏭 Takımlar
+          </button>
+        </div>
+        <span class="season-label" id="seasonLabel">2025 Sezonu</span>
+      </div>
+
+      <div id="loading-msg" style="color: #aaa; padding: 20px 0">
+        ⏳ Yükleniyor...
+      </div>
+
+      <div id="standings-container" style="display: none">
+        <div class="podium" id="podium"></div>
+        <table class="standings-table">
+          <thead id="table-head"></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2026 F1 HUB — Eğitim amaçlı</p>
+    </footer>
+
+    <script>
+      let currentTab = "drivers";
+      let driverData = [];
+      let constructorData = [];
+      const MEDALS = ["🥇", "🥈", "🥉"];
+
+      const sel = document.getElementById("seasonSelect");
+      for (let y = new Date().getFullYear(); y >= 1950; y--) {
+        const opt = document.createElement("option");
+        opt.value = y;
+        opt.textContent = y;
+        sel.appendChild(opt);
+      }
+
+      function switchTab(tab) {
+        currentTab = tab;
+        document
+          .getElementById("tab-drivers")
+          .classList.toggle("active", tab === "drivers");
+        document
+          .getElementById("tab-constructors")
+          .classList.toggle("active", tab === "constructors");
+        renderAll();
+      }
+
+      async function loadStandings() {
+        const year = document.getElementById("seasonSelect").value;
+        document.getElementById("seasonLabel").textContent = `${year} Sezonu`;
+        const msg = document.getElementById("loading-msg");
+        const container = document.getElementById("standings-container");
+        msg.style.display = "block";
+        msg.textContent = " Yükleniyor...";
+        container.style.display = "none";
+        try {
+          const [dRes, cRes] = await Promise.all([
+            fetch(
+              `https://api.jolpi.ca/ergast/f1/${year}/driverStandings.json`,
+            ),
+            fetch(
+              `https://api.jolpi.ca/ergast/f1/${year}/constructorStandings.json`,
+            ),
+          ]);
+          if (!dRes.ok || !cRes.ok) throw new Error();
+          const dData = await dRes.json();
+          const cData = await cRes.json();
+          const dList = dData.MRData.StandingsTable.StandingsLists[0];
+          const cList = cData.MRData.StandingsTable.StandingsLists[0];
+          driverData = dList ? dList.DriverStandings : [];
+          constructorData = cList ? cList.ConstructorStandings : [];
+          msg.style.display = "none";
+          container.style.display = "block";
+          renderAll();
+        } catch {
+          msg.textContent = "⚠️ Veri yüklenemedi. Tekrar deneyin.";
+        }
+      }
+
+      function renderAll() {
+        renderPodium();
+        renderTable();
+      }
+
+      function renderPodium() {
+        const data = currentTab === "drivers" ? driverData : constructorData;
+        document.getElementById("podium").innerHTML = data
+          .slice(0, 3)
+          .map((item, i) => {
+            const isDriver = currentTab === "drivers";
+            const name = isDriver
+              ? `${item.Driver.givenName} ${item.Driver.familyName}`
+              : item.Constructor.name;
+            const sub = isDriver
+              ? item.Constructors[0]?.name || "—"
+              : item.Constructor.nationality;
+            return `
+            <div class="podium-card p${i + 1}">
+              <div class="podium-pos">${i + 1}</div>
+              <div class="podium-medal">${MEDALS[i]}</div>
+              <div class="podium-name">${name}</div>
+              <div class="podium-team">${sub}</div>
+              <span class="podium-pts">${item.points} pts</span>
+            </div>`;
+          })
+          .join("");
+      }
+
+      function renderTable() {
+        const head = document.getElementById("table-head");
+        const body = document.getElementById("table-body");
+        if (currentTab === "drivers") {
+          head.innerHTML = `<tr><th>#</th><th>Sürücü</th><th>Takım</th><th>Milliyet</th><th>Puan</th><th>Galibiyet</th></tr>`;
+          body.innerHTML = driverData
+            .map(
+              (d, i) => `
+            <tr class="pos-${i + 1}">
+              <td class="pos-num">${d.position}</td>
+              <td>${d.Driver.givenName} ${d.Driver.familyName}</td>
+              <td style="color:#aaa;">${d.Constructors[0]?.name || "—"}</td>
+              <td class="nat">${d.Driver.nationality}</td>
+              <td><span class="points-badge">${d.points}</span></td>
+              <td class="wins-col">${d.wins}</td>
+            </tr>`,
+            )
+            .join("");
+        } else {
+          head.innerHTML = `<tr><th>#</th><th>Takım</th><th>Milliyet</th><th>Puan</th><th>Galibiyet</th></tr>`;
+          body.innerHTML = constructorData
+            .map(
+              (c, i) => `
+            <tr class="pos-${i + 1}">
+              <td class="pos-num">${c.position}</td>
+              <td>${c.Constructor.name}</td>
+              <td class="nat">${c.Constructor.nationality}</td>
+              <td><span class="points-badge">${c.points}</span></td>
+              <td class="wins-col">${c.wins}</td>
+            </tr>`,
+            )
+            .join("");
+        }
+      }
+
+      loadStandings();
+    </script>
+  </body>
+</html>

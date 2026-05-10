@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>F1 2026 Takvim</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">F1 HUB</h1>
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="champions.html">Şampiyonlar</a></li>
+          <li><a href="grid.html">Sıralamalar</a></li>
+          <li><a href="tracks.html">Takvim</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="tracks-page">
+      <h2>🏁2026 F1 Takvimi</h2>
+
+      <!-- Kartlar -->
+      <div id="calendar" class="track-list"></div>
+    </main>
+
+    <script src="tracks.js"></script>
+
+    <div
+      id="modal-overlay"
+      onclick="closeModal()"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 100;
+      "
+    ></div>
+
+    <div
+      id="modal"
+      style="
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #111;
+        border: 1px solid red;
+        border-radius: 12px;
+        padding: 28px;
+        z-index: 101;
+        max-width: 480px;
+        width: 90%;
+        max-height: 80vh;
+        overflow-y: auto;
+      "
+    >
+      <div id="modal-content"></div>
+      <button
+        onclick="closeModal()"
+        style="
+          margin-top: 15px;
+          background: #222;
+          color: red;
+          border: 1px solid red;
+          padding: 6px 14px;
+          border-radius: 6px;
+          cursor: pointer;
+        "
+      >
+        ✖ Kapat
+      </button>
+    </div>
+  </body>
+</html>

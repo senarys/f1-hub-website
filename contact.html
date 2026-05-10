@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>F1 HUB - İletişim</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">F1 HUB</h1>
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="champions.html">Şampiyonlar</a></li>
+          <li><a href="grid.html">Sıralamalar</a></li>
+          <li><a href="tracks.html">Takvim</a></li>
+          <li><a href="contact.html" style="color: red">İletişim</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="contact-page">
+      <div class="section-title">İletişim</div>
+
+      <div class="contact-grid">
+        <!-- SOL: BÜYÜK FORM -->
+        <div class="contact-form-section">
+          <div class="big-form">
+            <h2>Bize Ulaşın</h2>
+
+            <div class="form-row">
+              <input type="text" placeholder="Adınız" required />
+              <input type="text" placeholder="Soyadınız" />
+            </div>
+
+            <input type="email" placeholder="E-posta adresiniz" required />
+            <input type="text" placeholder="Konu" />
+
+            <select>
+              <option value="" disabled selected>Kategori seçin</option>
+              <option>Genel Soru</option>
+              <option>Hata Bildirimi</option>
+              <option>İçerik Önerisi</option>
+              <option>İş Birliği</option>
+              <option>Diğer</option>
+            </select>
+
+            <textarea placeholder="Mesajınızı buraya yazın..."></textarea>
+
+            <!-- Görsel ekleme alanı -->
+            <div>
+              <p style="color: #888; font-size: 11px; margin-bottom: 8px">
+                📎 Görsel ekle (isteğe bağlı)
+              </p>
+              <div class="image-upload-area" id="uploadArea">
+                <input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onchange="previewImages(event)"
+                />
+                + Görsel seçmek için tıklayın veya sürükleyin
+              </div>
+              <div class="image-preview" id="imagePreview"></div>
+            </div>
+
+            <button type="submit" onclick="submitForm(event)">Gönder</button>
+            <div class="success-msg" id="successMsg">
+              Mesajınız başarıyla gönderildi!
+            </div>
+          </div>
+        </div>
+
+        <!-- SAĞ: BİLGİ KARTLARI -->
+        <div class="contact-info-section">
+          <div class="contact-card">
+            <h3>Adres</h3>
+            <p>
+              F1 HUB Merkez<br />
+              Hastane Cd.<br />
+              Akdeniz, MERSİN<br />
+              Türkiye
+            </p>
+          </div>
+
+          <div class="contact-card">
+            <h3>E-posta</h3>
+            <p>info@f1hub.com<br />destek@f1hub.com</p>
+          </div>
+
+          <div class="contact-card">
+            <h3>Sosyal Medya</h3>
+            <div class="social-links">
+              <a href="#">𝕏 @F1HUB</a>
+              <a href="#">📘 facebook.com/f1hub</a>
+              <a href="#">📸 instagram.com/f1hub</a>
+              <a href="#">▶️ youtube.com/f1hub</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <h3>Çalışma Saatleri</h3>
+            <p>
+              Pazartesi – Cuma<br />
+              09:00 – 18:00<br /><br />
+              <span style="color: #666">Yarış hafta sonları aktif takip!</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2026 F1 HUB — Eğitim amaçlı</p>
+    </footer>
+
+    <script>
+      function previewImages(event) {
+        const preview = document.getElementById("imagePreview");
+        preview.innerHTML = "";
+        const files = Array.from(event.target.files);
+        files.forEach((file) => {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            preview.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function submitForm(e) {
+        e.preventDefault();
+        const msg = document.getElementById("successMsg");
+        msg.style.display = "block";
+        setTimeout(() => (msg.style.display = "none"), 4000);
+      }
+    </script>
+  </body>
+</html>

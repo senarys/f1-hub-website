@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>F1 HUB - Andretti Cadillac F1</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Cadillac Renk Paleti: Metalik Gri, Altın ve Siyah */
+      .team-hero {
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #000000 0%,
+          #1e1e1e 50%,
+          #c4a00622 100%
+        );
+        border-bottom: 3px solid #c4a006;
+        padding: 60px 40px 40px;
+        overflow: hidden;
+      }
+      .team-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 80% 50%,
+          #ffffff08 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+      .team-hero-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+      .team-logo-circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 0 40px #c4a00633;
+        overflow: hidden;
+      }
+      .team-logo-circle img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+      .team-hero-car {
+        height: 120px;
+        object-fit: contain;
+        margin-left: auto;
+        filter: drop-shadow(0 0 20px #ffffff11);
+      }
+      @media (max-width: 768px) {
+        .team-hero-car {
+          display: none;
+        }
+      }
+      .team-hero-text h1 {
+        font-size: 26px;
+        color: white;
+        margin-bottom: 6px;
+      }
+      .team-hero-text .team-subtitle {
+        color: #c4a006;
+        font-size: 12px;
+        margin-bottom: 12px;
+      }
+      .team-tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .tag {
+        background: rgba(196, 160, 6, 0.12);
+        border: 1px solid #c4a00644;
+        color: #c4a006;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+      }
+      .team-page-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 40px;
+      }
+      .team-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 30px;
+      }
+      @media (max-width: 768px) {
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .info-card {
+        background: #1a1a1a;
+        border-radius: 12px;
+        border-left: 4px solid #c4a006;
+        padding: 24px;
+        margin-bottom: 24px;
+      }
+      .info-card h2 {
+        font-size: 12px;
+        color: #c4a006;
+        margin-bottom: 16px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid #252525;
+        font-size: 12px;
+      }
+      .stat-row:last-child {
+        border-bottom: none;
+      }
+      .stat-label {
+        color: #666;
+      }
+      .stat-value {
+        color: white;
+        font-weight: bold;
+      }
+      .season-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .season-stat-box {
+        background: #111;
+        border-radius: 8px;
+        padding: 14px;
+        text-align: center;
+        border: 1px solid #222;
+      }
+      .season-stat-box .big-num {
+        font-size: 28px;
+        font-weight: bold;
+        color: #c4a006;
+        display: block;
+      }
+      .season-stat-box .small-label {
+        font-size: 10px;
+        color: #666;
+        margin-top: 4px;
+        display: block;
+      }
+      .driver-card {
+        background: #111;
+        border-radius: 10px;
+        padding: 16px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        border: 1px solid #222;
+        transition: 0.2s;
+      }
+      .driver-card:hover {
+        border-color: #c4a00644;
+        background: #1a1a1a;
+      }
+      .driver-number {
+        font-size: 28px;
+        font-weight: bold;
+        color: #c4a006;
+        width: 48px;
+        text-align: center;
+        flex-shrink: 0;
+      }
+      .driver-info .driver-name {
+        font-size: 14px;
+        color: white;
+        margin-bottom: 4px;
+      }
+      .driver-info .driver-detail {
+        font-size: 11px;
+        color: #666;
+      }
+      .loading-pulse {
+        display: inline-block;
+        width: 60px;
+        height: 14px;
+        background: #222;
+        border-radius: 4px;
+        animation: pulse 1.2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+      .history-timeline {
+        position: relative;
+        padding-left: 20px;
+      }
+      .history-timeline::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #c4a006, transparent);
+      }
+      .timeline-item {
+        position: relative;
+        padding: 0 0 20px 20px;
+        font-size: 12px;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -5px;
+        top: 4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #c4a006;
+        border: 2px solid #0f0f0f;
+      }
+      .timeline-year {
+        color: #c4a006;
+        font-weight: bold;
+        margin-bottom: 2px;
+      }
+      .timeline-desc {
+        color: #aaa;
+        line-height: 1.5;
+      }
+      .standings-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 0;
+        border-bottom: 1px solid #1e1e1e;
+        font-size: 12px;
+      }
+      .standings-row:last-child {
+        border-bottom: none;
+      }
+      .s-pos {
+        color: gold;
+        font-weight: bold;
+        width: 24px;
+      }
+      .s-year {
+        color: #aaa;
+        width: 40px;
+      }
+      .s-pts {
+        color: #c4a006;
+        margin-left: auto;
+      }
+      .spec-note {
+        background: #111;
+        border-left: 3px solid #c4a006;
+        padding: 12px 16px;
+        border-radius: 0 8px 8px 0;
+        font-size: 11px;
+        color: #aaa;
+        line-height: 1.7;
+        margin-top: 12px;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <h1 class="logo">F1 HUB</h1>
+        <ul class="menu">
+          <li><a href="index.html">Ana Sayfa</a></li>
+          <li><a href="champions.html">Şampiyonlar</a></li>
+          <li><a href="grid.html">Sıralamalar</a></li>
+          <li><a href="tracks.html">Takvim</a></li>
+          <li><a href="contact.html">İletişim</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="team-hero">
+      <div class="team-hero-inner">
+        <div class="team-logo-circle">
+          <img src="logo-cadillac.png" alt="Cadillac" />
+        </div>
+        <div class="team-hero-text">
+          <h1>Andretti Cadillac F1 Team</h1>
+          <div class="team-subtitle">
+            🇺🇸 Indianapolis, ABD · 2026 Aracı: V-Series.R F1
+          </div>
+          <div class="team-tags" id="hero-tags">
+            <span class="tag">⏳ Yükleniyor...</span>
+          </div>
+        </div>
+        <img src="car-cadillac.png" alt="Cadillac F1" class="team-hero-car" />
+      </div>
+    </div>
+
+    <div class="team-page-content">
+      <div class="team-grid">
+        <div>
+          <div class="info-card">
+            <h2>📊 2026 Sezonu — Anlık</h2>
+            <div class="season-stat-grid" id="season-stats">
+              <div class="season-stat-box">
+                <span class="big-num loading-pulse"></span
+                ><span class="small-label">Puan</span>
+              </div>
+              <div class="season-stat-box">
+                <span class="big-num loading-pulse"></span
+                ><span class="small-label">Galibiyet</span>
+              </div>
+              <div class="season-stat-box">
+                <span class="big-num loading-pulse"></span
+                ><span class="small-label">Sıralama</span>
+              </div>
+              <div class="season-stat-box">
+                <span class="big-num loading-pulse"></span
+                ><span class="small-label">Yarış</span>
+              </div>
+            </div>
+          </div>
+          <div class="info-card">
+            <h2>🔧 V-Series.R Teknik Özellikler</h2>
+            <div class="stat-row">
+              <span class="stat-label">Motor</span
+              ><span class="stat-value">Cadillac V-Series Power Unit</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Elektrik / ICE Oranı</span
+              ><span class="stat-value">~%50 / %50</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">MGU-K Gücü</span
+              ><span class="stat-value">350 kW</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Aerodinamik</span
+              ><span class="stat-value">Aktif aerodinamik konsept</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Geliştirme Üssü</span
+              ><span class="stat-value">Fishers, Indiana</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Yakıt</span
+              ><span class="stat-value">%100 Sürdürülebilir GM-Fuel</span>
+            </div>
+            <div class="spec-note">
+              "Cadillac'ın gelişi Amerikan motor sporlarının F1'deki en büyük
+              adımıdır." — Michael Andretti
+            </div>
+          </div>
+          <div class="info-card">
+            <h2>📈 Geçmiş Sezon Sıralamaları</h2>
+            <div id="past-seasons">
+              <div style="color: #aaa; font-size: 12px">⏳ Yükleniyor...</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <h2>📜 Tarihçe</h2>
+            <div class="history-timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-desc">
+                  Andretti Global ve GM ortaklığı F1 niyeti açıklandı.
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-desc">FIA resmi başvuruyu onayladı.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-desc">
+                  Silverstone tesisleri açıldı ve teknik ekip tamamlandı.
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-desc">
+                  Cadillac resmen griddeki yerini aldı.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="info-card">
+            <h2>🧑‍✈️ 2026 Sürücüleri</h2>
+            <div id="drivers-section">
+              <div style="color: #aaa; font-size: 12px">⏳ Yükleniyor...</div>
+            </div>
+          </div>
+          <div class="info-card">
+            <h2>🏆 Genel İstatistikler</h2>
+            <div class="stat-row">
+              <span class="stat-label">Kuruluş</span
+              ><span class="stat-value">2026 (Fabrika)</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Yapımcı Şampiyonluğu</span
+              ><span class="stat-value" id="stat-champ">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Toplam Galibiyet</span
+              ><span class="stat-value" id="stat-wins">0</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">CEO</span
+              ><span class="stat-value">Michael Andretti</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Üs</span
+              ><span class="stat-value">Indianapolis, ABD</span>
+            </div>
+          </div>
+          <div class="info-card">
+            <h2>⚙️ Motor Tedariki</h2>
+            <div class="stat-row">
+              <span class="stat-label">GM Cadillac</span
+              ><span class="stat-value">Fabrika takımı</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Teknik Ortak</span
+              ><span class="stat-value">Andretti Global</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer><p>© 2026 F1 HUB — Eğitim amaçlı</p></footer>
+
+    <script>
+      const CONSTRUCTOR_ID = "andretti"; // API'deki muhtemel ID
+      const BASE = "https://api.jolpi.ca/ergast/f1";
+
+      // Belirlediğin Perez ve Bottas kadrosu
+      const driverIDs = ["perez", "bottas"];
+      const driverNumbers = { perez: "11", bottas: "77" };
+
+      async function loadAll() {
+        try {
+          // 2026 Sıralaması ve spesifik sürücü verileri
+          const [standingsRes, ...driverResponses] = await Promise.all([
+            fetch(`${BASE}/2026/constructorStandings.json`),
+            ...driverIDs.map((id) => fetch(`${BASE}/drivers/${id}.json`)),
+          ]);
+
+          const standingsData = await standingsRes.json();
+          const driversData = await Promise.all(
+            driverResponses.map((r) => r.json()),
+          );
+
+          // Sezon Verileri
+          const standingsList =
+            standingsData.MRData.StandingsTable.StandingsLists[0];
+          const teamStanding = standingsList?.ConstructorStandings?.find(
+            (c) =>
+              c.Constructor.constructorId === CONSTRUCTOR_ID ||
+              c.Constructor.name.includes("Andretti"),
+          );
+
+          if (teamStanding) {
+            document.getElementById("season-stats").innerHTML = `
+              <div class="season-stat-box"><span class="big-num">${teamStanding.points}</span><span class="small-label">Puan</span></div>
+              <div class="season-stat-box"><span class="big-num">${teamStanding.wins}</span><span class="small-label">Galibiyet</span></div>
+              <div class="season-stat-box"><span class="big-num">${teamStanding.position}.</span><span class="small-label">Sıralama</span></div>
+              <div class="season-stat-box"><span class="big-num">${standingsList.round}</span><span class="small-label">Yarış</span></div>`;
+
+            document.getElementById("hero-tags").innerHTML = `
+              <span class="tag">Yeni Fabrika Takımı</span>
+              <span class="tag">${teamStanding.position}. Sıra (2026)</span>
+              <span class="tag">Motor: Cadillac V-Series</span>`;
+          } else {
+            // Veri yoksa 0 göster (Sezon başı)
+            document.getElementById("season-stats").innerHTML = `
+              <div class="season-stat-box"><span class="big-num">0</span><span class="small-label">Puan</span></div>
+              <div class="season-stat-box"><span class="big-num">0</span><span class="small-label">Galibiyet</span></div>
+              <div class="season-stat-box"><span class="big-num">—</span><span class="small-label">Sıralama</span></div>
+              <div class="season-stat-box"><span class="big-num">0</span><span class="small-label">Yarış</span></div>`;
+            document.getElementById("hero-tags").innerHTML =
+              `<span class="tag">Amerikan Fabrika Takımı</span><span class="tag">F160 V-Series</span>`;
+          }
+
+          // Geçmiş Sezonlar (Yeni takım olduğu için simüle)
+          document.getElementById("past-seasons").innerHTML =
+            `<div class="standings-row"><span class="s-pos">NEW</span><span class="s-year">2026</span><span style="color:#aaa;font-size:11px;flex:1;">F1 Giriş Yılı</span><span class="s-pts">0 pts</span></div>`;
+
+          // Sürücü Kartları
+          document.getElementById("drivers-section").innerHTML = driversData
+            .map((data) => {
+              const d = data.MRData.DriverTable.Drivers[0];
+              const num = driverNumbers[d.driverId] || d.permanentNumber;
+              const dob = new Date(d.dateOfBirth).toLocaleDateString("tr-TR");
+              return `
+              <div class="driver-card">
+                <div class="driver-number">${num}</div>
+                <div class="driver-info">
+                  <div class="driver-name">${d.givenName} ${d.familyName}</div>
+                  <div class="driver-detail">🌍 ${d.nationality}</div>
+                  <div class="driver-detail" style="margin-top:3px;">Doğum: ${dob}</div>
+                </div>
+              </div>`;
+            })
+            .join("");
+        } catch (err) {
+          console.error(err);
+        }
+      }
+      loadAll();
+    </script>
+  </body>
+</html>
