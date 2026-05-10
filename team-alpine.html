@@ -3,19 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>F1 HUB - McLaren Formula 1 Team</title>
+    <title>F1 HUB - Alpine F1 Team</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-      /* McLaren Renk Paleti: Papaya (#FF8700) ve Antrasit (#1E1E1E) */
       .team-hero {
         position: relative;
         background: linear-gradient(
           135deg,
-          #0b0b0b 0%,
-          #1e1e1e 50%,
-          #ff870022 100%
+          #005094 0%,
+          #002855 50%,
+          #ff66b211 100%
         );
-        border-bottom: 3px solid #ff8700;
+        border-bottom: 3px solid #005094;
         padding: 60px 40px 40px;
         overflow: hidden;
       }
@@ -25,7 +24,7 @@
         inset: 0;
         background: radial-gradient(
           ellipse at 80% 50%,
-          #ff870018 0%,
+          #ff66b218 0%,
           transparent 60%
         );
         pointer-events: none;
@@ -44,12 +43,12 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: #ff6f00;
+        background: #1b6bff;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        box-shadow: 0 0 40px #ff870055;
+        box-shadow: 0 0 40px #00509455;
         overflow: hidden;
       }
       .team-logo-circle img {
@@ -61,7 +60,7 @@
         height: 120px;
         object-fit: contain;
         margin-left: auto;
-        filter: drop-shadow(0 0 20px #ff870044);
+        filter: drop-shadow(0 0 20px #00509444);
       }
       @media (max-width: 768px) {
         .team-hero-car {
@@ -74,7 +73,7 @@
         margin-bottom: 6px;
       }
       .team-hero-text .team-subtitle {
-        color: #ff8700;
+        color: #ff66b2;
         font-size: 12px;
         margin-bottom: 12px;
       }
@@ -84,9 +83,9 @@
         flex-wrap: wrap;
       }
       .tag {
-        background: rgba(255, 135, 0, 0.12);
-        border: 1px solid #ff870044;
-        color: #ff8700;
+        background: rgba(255, 102, 178, 0.12);
+        border: 1px solid #ff66b244;
+        color: #ff66b2;
         padding: 4px 12px;
         border-radius: 20px;
         font-size: 11px;
@@ -109,13 +108,13 @@
       .info-card {
         background: #1a1a1a;
         border-radius: 12px;
-        border-left: 4px solid #ff8700;
+        border-left: 4px solid #005094;
         padding: 24px;
         margin-bottom: 24px;
       }
       .info-card h2 {
         font-size: 12px;
-        color: #ff8700;
+        color: #005094;
         margin-bottom: 16px;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -153,7 +152,7 @@
       .season-stat-box .big-num {
         font-size: 28px;
         font-weight: bold;
-        color: #ff8700;
+        color: #005094;
         display: block;
       }
       .season-stat-box .small-label {
@@ -174,13 +173,13 @@
         transition: 0.2s;
       }
       .driver-card:hover {
-        border-color: #ff870044;
+        border-color: #00509444;
         background: #1a1a1a;
       }
       .driver-number {
         font-size: 28px;
         font-weight: bold;
-        color: #ff8700;
+        color: #005094;
         width: 48px;
         text-align: center;
         flex-shrink: 0;
@@ -222,7 +221,7 @@
         top: 0;
         bottom: 0;
         width: 2px;
-        background: linear-gradient(to bottom, #ff8700, transparent);
+        background: linear-gradient(to bottom, #005094, transparent);
       }
       .timeline-item {
         position: relative;
@@ -237,11 +236,11 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background: #ff8700;
+        background: #005094;
         border: 2px solid #0f0f0f;
       }
       .timeline-year {
-        color: #ff8700;
+        color: #005094;
         font-weight: bold;
         margin-bottom: 2px;
       }
@@ -270,12 +269,12 @@
         width: 40px;
       }
       .s-pts {
-        color: #ff8700;
+        color: #005094;
         margin-left: auto;
       }
       .spec-note {
         background: #111;
-        border-left: 3px solid #ff8700;
+        border-left: 3px solid #ff66b2;
         padding: 12px 16px;
         border-radius: 0 8px 8px 0;
         font-size: 11px;
@@ -407,18 +406,18 @@
     <div class="team-hero">
       <div class="team-hero-inner">
         <div class="team-logo-circle">
-          <img src="logo-mclaren.jpg" alt="McLaren" />
+          <img src="logo-alpine.png" alt="Alpine" />
         </div>
         <div class="team-hero-text">
-          <h1>McLaren Formula 1 Team</h1>
+          <h1>Alpine F1 Team</h1>
           <div class="team-subtitle">
-            🇬🇧 Woking, Birleşik Krallık · 2026 Aracı: MCL26
+            🇫🇷 Enstone, Birleşik Krallık · 2026 Aracı: A526
           </div>
           <div class="team-tags" id="hero-tags">
             <span class="tag"> Yükleniyor...</span>
           </div>
         </div>
-        <img src="car-mclaren.avif" alt="McLaren MCL26" class="team-hero-car" />
+        <img src="car-alpine.avif" alt="Alpine A526" class="team-hero-car" />
       </div>
     </div>
 
@@ -446,70 +445,84 @@
               </div>
             </div>
           </div>
+          <!-- A226 Teknik -->
           <div class="info-card">
-            <h2>MCL26 Teknik Özellikler</h2>
+            <h2>A226 Teknik Özellikler</h2>
             <div class="stat-row">
               <span class="stat-label">Motor</span>
-              <span class="stat-value">Mercedes-AMG HPP</span>
+              <span class="stat-value">Mercedes M17 E Performance*</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Şasi</span>
-              <span class="stat-value">Karbon Fiber Kompozit Monokok</span>
+              <span class="stat-label">Elektrik / ICE Oranı</span>
+              <span class="stat-value">~%50 / %50</span>
             </div>
             <div class="stat-row">
               <span class="stat-label">MGU-K Gücü</span>
-              <span class="stat-value">350 kW (Yeni Regülasyon)</span>
+              <span class="stat-value">350 kW (Yüksek Enerji Yoğunluğu)</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Yakıt / Yağ</span>
-              <span class="stat-value">Petronas Sürdürülebilir</span>
+              <span class="stat-label">Dingil Mesafesi</span>
+              <span class="stat-value">-200 mm (yeni regülasyon)</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Genişlik</span>
+              <span class="stat-value">-100 mm (yeni regülasyon)</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Min. Ağırlık</span>
+              <span class="stat-value">~30 kg daha hafif</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Aerodinamik</span>
+              <span class="stat-value">Aktif "BWT" Aerodinamik Kanatlar</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">DRS</span>
+              <span class="stat-value">Kaldırıldı → Manual Override Mode</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Yakıt</span>
+              <span class="stat-value">BP / Castrol Sürdürülebilir Yakıt</span>
             </div>
             <div class="spec-note">
-              "Papaya renklerini podyumun en üst basamağına taşımak için
-              aerodinamik sınırları zorluyoruz." — Zak Brown
+              "Yeni bir teknik yapılanma ve motor stratejisiyle, Alpine'i
+              yeniden podyumun iddialı bir adayı haline getireceğiz." — Flavio
+              Briatore, Yönetici Danışman
             </div>
           </div>
           <div class="info-card">
             <h2>Geçmiş Sezon Sıralamaları</h2>
             <div id="past-seasons">
-              <div style="color: #aaa; font-size: 12px">Yükleniyor...</div>
+              <div style="color: #aaa; font-size: 12px">⏳ Yükleniyor...</div>
             </div>
           </div>
           <div class="info-card">
             <h2>Tarihçe</h2>
             <div class="history-timeline">
               <div class="timeline-item">
-                <div class="timeline-year">1963</div>
+                <div class="timeline-year">1970s</div>
                 <div class="timeline-desc">
-                  Bruce McLaren tarafından kuruldu. Yarış dünyasının en köklü
-                  isimlerinden biri.
+                  Renault'nun turbo motor devrimiyle F1 serüveni başladı.
                 </div>
               </div>
               <div class="timeline-item">
-                <div class="timeline-year">1988</div>
+                <div class="timeline-year">2005–2006</div>
                 <div class="timeline-desc">
-                  Senna ve Prost dominasyonu. MP4/4 ile 16 yarışın 15'ini
-                  kazanarak rekor kırdılar.
+                  Alonso ile üst üste iki Yapımcılar ve Sürücüler şampiyonluğu.
                 </div>
               </div>
               <div class="timeline-item">
-                <div class="timeline-year">1998–1999</div>
+                <div class="timeline-year">2021</div>
                 <div class="timeline-desc">
-                  Mika Häkkinen ile "Uçan Fin" dönemi ve üst üste
-                  şampiyonluklar.
+                  Renault, sportif markası Alpine adı altında yeniden
+                  markalandı. Ocon ile Macaristan zaferi.
                 </div>
               </div>
               <div class="timeline-item">
-                <div class="timeline-year">2008</div>
+                <div class="timeline-year">2026</div>
                 <div class="timeline-desc">
-                  Lewis Hamilton ile dramatik son tur şampiyonluğu.
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-year">2024–2025</div>
-                <div class="timeline-desc">
-                  Lando Norris ve Oscar Piastri ile yeniden zirve mücadelesine
-                  dönüş.
+                  Renault motor üretimine son verdi; Alpine Mercedes müşteri
+                  takımı oldu.
                 </div>
               </div>
             </div>
@@ -519,26 +532,26 @@
           <div class="info-card">
             <h2>2026 Sürücüleri</h2>
             <div id="drivers-section">
-              <div style="color: #aaa; font-size: 12px">Yükleniyor...</div>
+              <div style="color: #aaa; font-size: 12px">⏳ Yükleniyor...</div>
             </div>
           </div>
           <div class="info-card">
             <h2>Genel İstatistikler</h2>
             <div class="stat-row">
               <span class="stat-label">Kuruluş</span
-              ><span class="stat-value">1963</span>
+              ><span class="stat-value">1977 / 2021</span>
             </div>
             <div class="stat-row">
               <span class="stat-label">Takım Şampiyonluğu</span
-              ><span class="stat-value" id="stat-champ">8</span>
+              ><span class="stat-value" id="stat-champ">2</span>
             </div>
             <div class="stat-row">
               <span class="stat-label">Toplam Galibiyet</span
-              ><span class="stat-value" id="stat-wins">188+</span>
+              ><span class="stat-value" id="stat-wins">36+</span>
             </div>
             <div class="stat-row">
               <span class="stat-label">Takım Patronu</span
-              ><span class="stat-value">Zak Brown</span>
+              ><span class="stat-value">Oliver Oakes</span>
             </div>
             <div class="stat-row">
               <span class="stat-label">Motor Üssü</span
@@ -546,13 +559,14 @@
             </div>
             <div class="stat-row">
               <span class="stat-label">Şasi Üssü</span
-              ><span class="stat-value">Woking, İngiltere</span>
+              ><span class="stat-value">Enstone, İngiltere</span>
             </div>
           </div>
           <div class="info-card">
-            <h2>2026 Motor Tedariki</h2>
+            <h2>Motor Tedariki</h2>
+
             <div class="stat-row">
-              <span class="stat-label">Mercedes-AMG HPP</span
+              <span class="stat-label">Mercedes HPP</span
               ><span class="stat-value">Tedarikçi</span>
             </div>
           </div>
@@ -563,28 +577,21 @@
     <footer><p>© 2026 F1 HUB — Eğitim amaçlı</p></footer>
 
     <script>
-      const CONSTRUCTOR_ID = "mclaren"; // API ID'si McLaren olarak güncellendi
+      const CONSTRUCTOR_ID = "alpine";
       const BASE = "https://api.jolpi.ca/ergast/f1";
-      const driverNumbers = {
-        norris: "4",
-        piastri: "81",
-        hamilton: "44",
-        hakkinen: "8",
-      };
-
+      const driverNumbers = { gasly: "10", doohan: "12", sainz: "55" };
       const pastSeasons = [
-        { season: "2025", pos: "1", wins: "7", pts: "710" },
-        { season: "2024", pos: "1", wins: "5", pts: "666" },
-        { season: "2023", pos: "4", wins: "0", pts: "302" },
-        { season: "2022", pos: "5", wins: "0", pts: "159" },
-        { season: "2021", pos: "4", wins: "1", pts: "275" },
-        { season: "2020", pos: "3", wins: "0", pts: "202" },
+        { season: "2025", pos: "8", wins: "0", pts: "32" },
+        { season: "2024", pos: "8", wins: "0", pts: "15" },
+        { season: "2023", pos: "6", wins: "0", pts: "120" },
+        { season: "2022", pos: "4", wins: "0", pts: "173" },
+        { season: "2021", pos: "5", wins: "1", pts: "155" },
       ];
 
       async function loadAll() {
         try {
           const [currentRes, driversRes] = await Promise.all([
-            fetch(`${BASE}/current/constructorStandings.json`),
+            fetch(`${BASE}/2026/constructorStandings.json`),
             fetch(`${BASE}/2026/constructors/${CONSTRUCTOR_ID}/drivers.json`),
           ]);
           const [currentData, driversData] = await Promise.all([
@@ -592,9 +599,9 @@
             driversRes.json(),
           ]);
 
-          const currentList =
+          const standingsList =
             currentData.MRData.StandingsTable.StandingsLists[0];
-          const teamStanding = currentList?.ConstructorStandings?.find(
+          const teamStanding = standingsList?.ConstructorStandings?.find(
             (c) => c.Constructor.constructorId === CONSTRUCTOR_ID,
           );
 
@@ -603,27 +610,18 @@
               <div class="season-stat-box"><span class="big-num">${teamStanding.points}</span><span class="small-label">Puan</span></div>
               <div class="season-stat-box"><span class="big-num">${teamStanding.wins}</span><span class="small-label">Galibiyet</span></div>
               <div class="season-stat-box"><span class="big-num">${teamStanding.position}.</span><span class="small-label">Sıralama</span></div>
-              <div class="season-stat-box"><span class="big-num">${currentList.round}</span><span class="small-label">Yarış</span></div>
-            `;
+              <div class="season-stat-box"><span class="big-num">${standingsList.round}</span><span class="small-label">Yarış</span></div>`;
             document.getElementById("hero-tags").innerHTML = `
-              <span class="tag">8x Yapımcı Şampiyonu</span>
+              <span class="tag">Mercedes Gücü</span>
               <span class="tag">${teamStanding.position}. Sıra (2026)</span>
-              <span class="tag">Motor: Mercedes-AMG</span>
-            `;
+              <span class="tag">Motor: Mercedes HPP</span>`;
           }
 
           document.getElementById("past-seasons").innerHTML = pastSeasons
-            .map((s) => {
-              const medal =
-                s.pos === "1"
-                  ? "🏆"
-                  : s.pos === "2"
-                    ? "🥈"
-                    : s.pos === "3"
-                      ? "🥉"
-                      : s.pos + ".";
-              return `<div class="standings-row"><span class="s-pos">${medal}</span><span class="s-year">${s.season}</span><span style="color:#aaa;font-size:11px;flex:1;">${s.wins} galibiyet</span><span class="s-pts">${s.pts} pts</span></div>`;
-            })
+            .map(
+              (s) =>
+                `<div class="standings-row"><span class="s-pos">${s.pos}.</span><span class="s-year">${s.season}</span><span style="color:#aaa;font-size:11px;flex:1;">${s.wins} gal.</span><span class="s-pts">${s.pts} pts</span></div>`,
+            )
             .join("");
 
           const drivers = driversData.MRData.DriverTable.Drivers;
@@ -633,6 +631,9 @@
               return `<div class="driver-card"><div class="driver-number">${num}</div><div class="driver-info"><div class="driver-name">${d.givenName} ${d.familyName}</div><div class="driver-detail">🌍 ${d.nationality}</div></div></div>`;
             })
             .join("");
+
+          document.getElementById("stat-champ").textContent = "2";
+          document.getElementById("stat-wins").textContent = "36";
         } catch (err) {
           console.error(err);
         }

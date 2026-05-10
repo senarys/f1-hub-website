@@ -43,7 +43,7 @@
         width: 100px;
         height: 100px;
         border-radius: 50%;
-        background: #ffffff;
+        background: #000000;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -294,6 +294,110 @@
           <li><a href="champions.html">Şampiyonlar</a></li>
           <li><a href="grid.html">Sıralamalar</a></li>
           <li><a href="tracks.html">Takvim</a></li>
+          <li class="has-dropdown">
+            <a href="#">Takımlar ▾</a>
+            <div class="dropdown">
+              <a class="dropdown-item" href="team-mercedes.html">
+                <div class="team-dot" style="background: #00d2be"></div>
+                <span>Mercedes-AMG Petronas</span>
+                <img
+                  src="logo-mercedes.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-ferrari.html">
+                <div class="team-dot" style="background: #dc0000"></div>
+                <span>Scuderia Ferrari</span>
+                <img
+                  src="logo-ferrari.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-mclaren.html">
+                <div class="team-dot" style="background: #ff8000"></div>
+                <span>McLaren</span>
+                <img
+                  src="logo-mclaren.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-redbull.html">
+                <div class="team-dot" style="background: #3671c6"></div>
+                <span>Red Bull Racing</span>
+                <img
+                  src="logo-redbull.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-williams.html">
+                <div class="team-dot" style="background: #005aff"></div>
+                <span>Williams</span>
+                <img
+                  src="logo-williams.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-astonmartin.html">
+                <div class="team-dot" style="background: #006f62"></div>
+                <span>Aston Martin</span>
+                <img
+                  src="logo-astonmartin.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-alpine.html">
+                <div class="team-dot" style="background: #0090ff"></div>
+                <span>Alpine</span>
+                <img
+                  src="logo-alpine.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-haas.html">
+                <div class="team-dot" style="background: #b6babd"></div>
+                <span>Haas</span>
+                <img
+                  src="logo-haas.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-racingbulls.html">
+                <div class="team-dot" style="background: #6692ff"></div>
+                <span>Racing Bulls</span>
+                <img
+                  src="logo-racingbulls.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-audi.html">
+                <div class="team-dot" style="background: #c92d4b"></div>
+                <span>Audi</span>
+                <img
+                  src="logo-audi.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-cadillac.html">
+                <div class="team-dot" style="background: #cc0000"></div>
+                <span>Cadillac</span>
+                <img
+                  src="logo-cadillac.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+            </div>
+          </li>
           <li><a href="contact.html">İletişim</a></li>
         </ul>
       </nav>
@@ -310,10 +414,10 @@
             🇩🇪 Neuburg an der Donau, Almanya · 2026 Aracı: F160
           </div>
           <div class="team-tags" id="hero-tags">
-            <span class="tag">⏳ Yükleniyor...</span>
+            <span class="tag">Yükleniyor...</span>
           </div>
         </div>
-        <img src="car-audi.png" alt="Audi F160" class="team-hero-car" />
+        <img src="car-audi.avif" alt="Audi F160" class="team-hero-car" />
       </div>
     </div>
 
@@ -321,7 +425,7 @@
       <div class="team-grid">
         <div>
           <div class="info-card">
-            <h2>📊 2026 Sezonu — Anlık</h2>
+            <h2>2026 Sezonu</h2>
             <div class="season-stat-grid" id="season-stats">
               <div class="season-stat-box">
                 <span class="big-num loading-pulse"></span
@@ -341,45 +445,59 @@
               </div>
             </div>
           </div>
+          <!-- Audi A5 F1 Teknik -->
           <div class="info-card">
-            <h2>🔧 F160 Teknik Özellikler</h2>
+            <h2>Audi A5 F1 Teknik Özellikler</h2>
             <div class="stat-row">
-              <span class="stat-label">Motor</span
-              ><span class="stat-value">Audi Sport (Power Unit 2026)</span>
+              <span class="stat-label">Motor</span>
+              <span class="stat-value">Audi Power Unit (Neuburg)</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Elektrik / ICE Oranı</span
-              ><span class="stat-value">~%50 / %50</span>
+              <span class="stat-label">Elektrik / ICE Oranı</span>
+              <span class="stat-value">~%50 / %50</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">MGU-K Gücü</span
-              ><span class="stat-value">350 kW (E-Power Focus)</span>
+              <span class="stat-label">MGU-K Gücü</span>
+              <span class="stat-value">350 kW (Vorsprung Tech)</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Aerodinamik</span
-              ><span class="stat-value">Aktif aerodinamik konsept</span>
+              <span class="stat-label">Dingil Mesafesi</span>
+              <span class="stat-value">-200 mm (Kıvrak Şasi)</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Sürdürülebilirlik</span
-              ><span class="stat-value">%100 Sürdürülebilir Yakıt</span>
+              <span class="stat-label">Genişlik</span>
+              <span class="stat-value">-100 mm (Dar Gövde)</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Ar-Ge Merkezi</span
-              ><span class="stat-value">Neuburg Teknik Merkezi</span>
+              <span class="stat-label">Min. Ağırlık</span>
+              <span class="stat-value">722 kg (Batarya Dahil)</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Aerodinamik</span>
+              <span class="stat-value">Ultra Düşük Sürtünme / Aktif Aero</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">DRS</span>
+              <span class="stat-value">Kaldırıldı → Boost Mode</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Yakıt</span>
+              <span class="stat-value">BP / Castrol Sürdürülebilir Yakıt</span>
             </div>
             <div class="spec-note">
-              "F160 projesi, Audi'nin mühendislik mükemmeliyetini en üst düzeye
-              çıkarma hedefinin bir sonucudur." — Mattia Binotto
+              "Alman mühendisliğini hibrit motorun zirvesine taşımak için
+              tamamen yeni bir sayfa açıyoruz." — Mattia Binotto, Proje
+              Sorumlusu
             </div>
           </div>
           <div class="info-card">
-            <h2>📈 Geçmiş Sezon Sıralamaları</h2>
+            <h2>Geçmiş Sezon Sıralamaları</h2>
             <div id="past-seasons">
-              <div style="color: #aaa; font-size: 12px">⏳ Yükleniyor...</div>
+              <div style="color: #aaa; font-size: 12px">Yükleniyor...</div>
             </div>
           </div>
           <div class="info-card">
-            <h2>📜 Tarihçe</h2>
+            <h2>Tarihçe</h2>
             <div class="history-timeline">
               <div class="timeline-item">
                 <div class="timeline-year">2022</div>
@@ -414,19 +532,19 @@
         </div>
         <div>
           <div class="info-card">
-            <h2>🧑‍✈️ 2026 Sürücüleri</h2>
+            <h2>2026 Sürücüleri</h2>
             <div id="drivers-section">
               <div style="color: #aaa; font-size: 12px">⏳ Yükleniyor...</div>
             </div>
           </div>
           <div class="info-card">
-            <h2>🏆 Genel İstatistikler</h2>
+            <h2>Genel İstatistikler</h2>
             <div class="stat-row">
               <span class="stat-label">Kuruluş</span
               ><span class="stat-value">2026 (Fabrika Takımı)</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Yapımcı Şampiyonluğu</span
+              <span class="stat-label">Takım Şampiyonluğu</span
               ><span class="stat-value" id="stat-champ"
                 ><span class="loading-pulse"></span
               ></span>
@@ -438,23 +556,23 @@
               ></span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Operasyon Direktörü</span
+              <span class="stat-label">Takım patronu</span
               ><span class="stat-value">Mattia Binotto</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Üs</span
+              <span class="stat-label">Motor Üssü</span
               ><span class="stat-value">Neuburg, Almanya</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Şasi Üssü</span
+              ><span class="stat-value">Hinwil, İsviçre</span>
             </div>
           </div>
           <div class="info-card">
-            <h2>⚙️ Motor Tedariki</h2>
+            <h2>Motor Tedariki</h2>
             <div class="stat-row">
               <span class="stat-label">Audi Sport</span
               ><span class="stat-value">Fabrika takımı</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-label">Tesis</span
-              ><span class="stat-value">Competence Center Motorsport</span>
             </div>
           </div>
         </div>
@@ -480,24 +598,52 @@
         { season: "2024", pos: "10", wins: "0", pts: "0" },
       ];
 
+      // Audi 2026 sürücüleri — API henüz "audi" ID'sini tanımadığından statik
+      const staticDrivers = [
+        {
+          num: "27",
+          name: "Nico Hülkenberg",
+          nationality: "Alman",
+          dob: "19.08.1987",
+        },
+        {
+          num: "12",
+          name: "Gabriel Bortoleto",
+          nationality: "Brezilyalı",
+          dob: "14.10.2004",
+        },
+      ];
+
+      function renderDrivers() {
+        document.getElementById("drivers-section").innerHTML = staticDrivers
+          .map(
+            (d) => `
+              <div class="driver-card">
+                <div class="driver-number">${d.num}</div>
+                <div class="driver-info">
+                  <div class="driver-name">${d.name}</div>
+                  <div class="driver-detail">🌍 ${d.nationality}</div>
+                  <div class="driver-detail" style="margin-top:3px;">Doğum: ${d.dob}</div>
+                </div>
+              </div>`,
+          )
+          .join("");
+      }
+
       async function loadAll() {
+        renderDrivers();
         try {
-          // Not: 2026 verileri API'de "audi" veya "sauber" olarak güncellenmiş olabilir
-          const [currentRes, driversRes] = await Promise.all([
-            fetch(`${BASE}/current/constructorStandings.json`),
-            fetch(`${BASE}/2026/constructors/sauber/drivers.json`), // Geçiş ID'si
-          ]);
-          const [currentData, driversData] = await Promise.all([
-            currentRes.json(),
-            driversRes.json(),
-          ]);
+          // Standings için önce "audi" sonra "sauber" ID'sini dene
+          const constructorIds = ["audi", "sauber"];
+          const currentRes = await fetch(
+            `${BASE}/2026/constructorStandings.json`,
+          );
+          const currentData = await currentRes.json();
 
           const currentList =
             currentData.MRData.StandingsTable.StandingsLists[0];
-          const teamStanding = currentList?.ConstructorStandings?.find(
-            (c) =>
-              c.Constructor.constructorId === "audi" ||
-              c.Constructor.constructorId === "sauber",
+          const teamStanding = currentList?.ConstructorStandings?.find((c) =>
+            constructorIds.includes(c.Constructor.constructorId),
           );
 
           if (teamStanding) {
@@ -509,7 +655,7 @@
             `;
             document.getElementById("hero-tags").innerHTML = `
               <span class="tag">Yeni Fabrika Takımı</span>
-              <span class="tag">Vorsprung durch Technik</span>
+              <span class="tag">${teamStanding.position}. Sıra (2026)</span>
               <span class="tag">Motor: Audi Power Unit</span>
             `;
           }
@@ -523,14 +669,6 @@
 
           document.getElementById("stat-champ").textContent = "0";
           document.getElementById("stat-wins").textContent = "0";
-
-          const drivers = driversData.MRData.DriverTable.Drivers;
-          document.getElementById("drivers-section").innerHTML = drivers
-            .map((d) => {
-              const num = driverNumbers[d.driverId] || d.permanentNumber || "—";
-              return `<div class="driver-card"><div class="driver-number">${num}</div><div class="driver-info"><div class="driver-name">${d.givenName} ${d.familyName}</div><div class="driver-detail">🌍 ${d.nationality}</div></div></div>`;
-            })
-            .join("");
         } catch (err) {
           console.error(err);
         }

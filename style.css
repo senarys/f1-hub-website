@@ -713,3 +713,58 @@ footer {
   background: #111;
   margin-top: 40px;
 }
+.has-dropdown {
+  position: relative;
+}
+
+.has-dropdown .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-top: 2px solid red;
+  min-width: 240px;
+  z-index: 999;
+  padding: 6px 0;
+  border-radius: 0 0 8px 8px;
+}
+
+.has-dropdown:hover .dropdown {
+  display: block;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  text-decoration: none;
+  color: white;
+  transition: 0.15s;
+  font-size: 12px;
+}
+
+.dropdown-item:hover {
+  background: #1a1a1a;
+}
+
+.team-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dropdown-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  margin-left: auto;
+  opacity: 0.85;
+}
+
+.dropdown-item:hover .dropdown-logo {
+  opacity: 1;
+}

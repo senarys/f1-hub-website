@@ -295,6 +295,110 @@
           <li><a href="champions.html">Şampiyonlar</a></li>
           <li><a href="grid.html">Sıralamalar</a></li>
           <li><a href="tracks.html">Takvim</a></li>
+          <li class="has-dropdown">
+            <a href="#">Takımlar ▾</a>
+            <div class="dropdown">
+              <a class="dropdown-item" href="team-mercedes.html">
+                <div class="team-dot" style="background: #00d2be"></div>
+                <span>Mercedes-AMG Petronas</span>
+                <img
+                  src="logo-mercedes.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-ferrari.html">
+                <div class="team-dot" style="background: #dc0000"></div>
+                <span>Scuderia Ferrari</span>
+                <img
+                  src="logo-ferrari.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-mclaren.html">
+                <div class="team-dot" style="background: #ff8000"></div>
+                <span>McLaren</span>
+                <img
+                  src="logo-mclaren.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-redbull.html">
+                <div class="team-dot" style="background: #3671c6"></div>
+                <span>Red Bull Racing</span>
+                <img
+                  src="logo-redbull.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-williams.html">
+                <div class="team-dot" style="background: #005aff"></div>
+                <span>Williams</span>
+                <img
+                  src="logo-williams.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-astonmartin.html">
+                <div class="team-dot" style="background: #006f62"></div>
+                <span>Aston Martin</span>
+                <img
+                  src="logo-astonmartin.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-alpine.html">
+                <div class="team-dot" style="background: #0090ff"></div>
+                <span>Alpine</span>
+                <img
+                  src="logo-alpine.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-haas.html">
+                <div class="team-dot" style="background: #b6babd"></div>
+                <span>Haas</span>
+                <img
+                  src="logo-haas.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-racingbulls.html">
+                <div class="team-dot" style="background: #6692ff"></div>
+                <span>Racing Bulls</span>
+                <img
+                  src="logo-racingbulls.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-audi.html">
+                <div class="team-dot" style="background: #c92d4b"></div>
+                <span>Audi</span>
+                <img
+                  src="logo-audi.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+              <a class="dropdown-item" href="team-cadillac.html">
+                <div class="team-dot" style="background: #cc0000"></div>
+                <span>Cadillac</span>
+                <img
+                  src="logo-cadillac.png"
+                  class="dropdown-logo"
+                  onerror="this.style.display = 'none'"
+                />
+              </a>
+            </div>
+          </li>
           <li><a href="contact.html">İletişim</a></li>
         </ul>
       </nav>
@@ -314,7 +418,7 @@
             <span class="tag">⏳ Yükleniyor...</span>
           </div>
         </div>
-        <img src="car-redbull.png" alt="Red Bull RB22" class="team-hero-car" />
+        <img src="car-redbull.avif" alt="Red Bull RB22" class="team-hero-car" />
       </div>
     </div>
 
@@ -322,7 +426,7 @@
       <div class="team-grid">
         <div>
           <div class="info-card">
-            <h2>📊 2026 Sezonu — Anlık</h2>
+            <h2>2026 Sezonu</h2>
             <div class="season-stat-grid" id="season-stats">
               <div class="season-stat-box">
                 <span class="big-num loading-pulse"></span
@@ -342,11 +446,12 @@
               </div>
             </div>
           </div>
+          <!-- RB22 Teknik -->
           <div class="info-card">
-            <h2>🔧 RB22 Teknik Özellikler</h2>
+            <h2>RB22 Teknik Özellikler</h2>
             <div class="stat-row">
               <span class="stat-label">Motor</span>
-              <span class="stat-value">Red Bull Ford (RBPT) 2026</span>
+              <span class="stat-value">Red Bull Ford Powertrains</span>
             </div>
             <div class="stat-row">
               <span class="stat-label">Elektrik / ICE Oranı</span>
@@ -354,33 +459,45 @@
             </div>
             <div class="stat-row">
               <span class="stat-label">MGU-K Gücü</span>
-              <span class="stat-value">350 kW</span>
+              <span class="stat-value">350 kW (Ford E-Boost)</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Dingil Mesafesi</span>
+              <span class="stat-value">-200 mm (yeni regülasyon)</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Genişlik</span>
+              <span class="stat-value">-100 mm (yeni regülasyon)</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Min. Ağırlık</span>
+              <span class="stat-value">~30 kg daha hafif</span>
             </div>
             <div class="stat-row">
               <span class="stat-label">Aerodinamik</span>
-              <span class="stat-value">Aktif "Newey-Core" Aero Paketi</span>
+              <span class="stat-value">Gelişmiş Aktif Kanat Kontrolü</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Şanzıman</span>
-              <span class="stat-value">Red Bull 8-İleri</span>
+              <span class="stat-label">DRS</span>
+              <span class="stat-value">Kaldırıldı → Manual Override Mode</span>
             </div>
             <div class="stat-row">
               <span class="stat-label">Yakıt</span>
-              <span class="stat-value">ExxonMobil Sürdürülebilir</span>
+              <span class="stat-value">Mobil 1 Sürdürülebilir Formül</span>
             </div>
             <div class="spec-note">
-              "Kendi motorumuzu üretmek, bağımsızlığımızın ve gelecekteki
-              dominasyonumuzun temelidir." — Christian Horner
+              "Ford ortaklığıyla kendi motorumuzu üretmek, 2026'da bize tam
+              entegrasyon avantajı sağlayacak." — Christian Horner, CEO
             </div>
           </div>
           <div class="info-card">
-            <h2>📈 Geçmiş Sezon Sıralamaları</h2>
+            <h2>Geçmiş Sezon Sıralamaları</h2>
             <div id="past-seasons">
-              <div style="color: #aaa; font-size: 12px">⏳ Yükleniyor...</div>
+              <div style="color: #aaa; font-size: 12px">Yükleniyor...</div>
             </div>
           </div>
           <div class="info-card">
-            <h2>📜 Tarihçe</h2>
+            <h2>Tarihçe</h2>
             <div class="history-timeline">
               <div class="timeline-item">
                 <div class="timeline-year">2005</div>
@@ -419,7 +536,7 @@
             </div>
           </div>
           <div class="info-card">
-            <h2>🏆 Genel İstatistikler</h2>
+            <h2>Genel İstatistikler</h2>
             <div class="stat-row">
               <span class="stat-label">Kuruluş</span>
               <span class="stat-value">2005</span>
@@ -437,16 +554,20 @@
               ></span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Takım Direktörü</span>
-              <span class="stat-value">Christian Horner</span>
+              <span class="stat-label">Takım Patronu</span>
+              <span class="stat-value">Laurent Mekies</span>
             </div>
             <div class="stat-row">
-              <span class="stat-label">Üs</span>
-              <span class="stat-value">Milton Keynes, BK</span>
+              <span class="stat-label">Motor Üssü</span>
+              <span class="stat-value">Milton Keynes, İngiltere</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label">Şasi Üssü</span>
+              <span class="stat-value">Milton Keynes, İngiltere</span>
             </div>
           </div>
           <div class="info-card">
-            <h2>⚙️ Motor Tedariki</h2>
+            <h2>Motor Tedariki</h2>
             <div class="stat-row">
               <span class="stat-label">Red Bull Ford</span>
               <span class="stat-value">Fabrika takımı</span>
@@ -454,10 +575,6 @@
             <div class="stat-row">
               <span class="stat-label">VCARB</span>
               <span class="stat-value">Müşteri / Partner</span>
-            </div>
-            <div class="stat-row">
-              <span class="stat-label">Tedarikçi</span>
-              <span class="stat-value">Red Bull Powertrains</span>
             </div>
           </div>
         </div>
