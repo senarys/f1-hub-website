@@ -1,35 +1,40 @@
-const list = document.getElementById("calendar");
-const detail = document.getElementById("trackDetail");
+const list = document.getElementById("calendar"); //htmlden çeker
 
-let races = [];
+let races = []; //liste tutar
 
 async function loadCalendar() {
-  list.innerHTML = `<p style="color:#aaa;"> Takvim yükleniyor...</p>`;
+  //2026 api çekiş
+  list.innerHTML = `<p style="color:#aaa;"> Takvim yükleniyor...</p>`; //ekran boşsa
 
   try {
     const res = await fetch("https://api.jolpi.ca/ergast/f1/2026/races.json");
     if (!res.ok) throw new Error("API hatası");
-    const data = await res.json();
+    const data = await res.json(); //jsona çevir
 
-    races = data.MRData.RaceTable.Races;
-    list.innerHTML = "";
+    races = data.MRData.RaceTable.Races; //jsondan yarış listesine ulaş races dizisine atar
+    list.innerHTML = ""; //yükleniyoru temizle
 
-    races.forEach((race, i) => {
-      const card = document.createElement("div");
-      card.className = "track-card";
+    races.forEach(
+      (
+        race,
+        i, //her yarış için kart
+      ) => {
+        const card = document.createElement("div");
+        card.className = "track-card";
 
-      const flagEmoji = countryFlag(race.Circuit.Location.country);
+        const flagEmoji = countryFlag(race.Circuit.Location.country);
 
-      card.innerHTML = `
+        card.innerHTML = `
         <h3>🏁 ${race.raceName}</h3>
         <p>${flagEmoji} ${race.Circuit.Location.country}</p>
         <p> ${formatDate(race.date)}</p>
         <p style="font-size:11px;color:#aaa;margin-top:6px;">Detay için tıkla →</p>
       `;
 
-      card.onclick = () => showTrack(i);
-      list.appendChild(card);
-    });
+        card.onclick = () => showTrack(i); //tıklanınca showtrack çalışacak
+        list.appendChild(card); //kartı sayfaya ekler
+      },
+    );
   } catch (err) {
     console.error(err);
     list.innerHTML = `<p style="color:red;">⚠️ Takvim yüklenemedi. Lütfen sayfayı yenileyin.</p>`;
@@ -40,6 +45,7 @@ function showTrack(i) {
   const r = races[i];
   const stats = getTrackStats(r.Circuit.circuitId);
   const flagEmoji = countryFlag(r.Circuit.Location.country);
+  //sabitlere apiden gelen bilgileri ekledi
 
   document.getElementById("modal-content").innerHTML = `
     <h2 style="margin-bottom:12px;">🏁 ${r.Circuit.circuitName}</h2>
@@ -55,16 +61,19 @@ function showTrack(i) {
     <p> <strong>En başarılı takım:</strong> ${stats.team}</p>
     <p> <strong>İlk GP yılı:</strong> ${stats.firstGP}</p>
   `;
+  //htmldeki modalla bilgi girişi
 
   document.getElementById("modal").style.display = "block";
   document.getElementById("modal-overlay").style.display = "block";
 }
-
+//görünürleştir
 function closeModal() {
   document.getElementById("modal").style.display = "none";
   document.getElementById("modal-overlay").style.display = "none";
 }
-// ── DETAYLAR VERİTABANI ───────────────────────────────────────────────────────
+//tam tersi
+
+// VERİTABANI
 function getTrackStats(rawId) {
   const id = rawId.toLowerCase().replace(/[-_]/g, "");
 
@@ -454,6 +463,7 @@ function formatDate(dateStr) {
     year: "numeric",
   });
 }
+//js nesnesine çevirdik
 
 function countryFlag(country) {
   const flags = {

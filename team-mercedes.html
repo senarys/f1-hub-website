@@ -18,6 +18,8 @@
         padding: 60px 40px 40px;
         overflow: hidden;
       }
+      /*gradyan banner*/
+
       .team-hero::before {
         content: "";
         position: absolute;
@@ -29,6 +31,8 @@
         );
         pointer-events: none;
       }
+      /*banner parlaklık için*/
+
       .team-hero-inner {
         max-width: 1100px;
         margin: 0 auto;
@@ -39,6 +43,8 @@
         position: relative;
         z-index: 1;
       }
+      /*yazı görsel logo flexlendi*/
+
       .team-logo-circle {
         width: 100px;
         height: 100px;
@@ -51,12 +57,15 @@
         flex-shrink: 0;
         box-shadow: 0 0 40px #00d2be55;
       }
+
       .team-hero-car {
         height: 120px;
         object-fit: contain;
         margin-left: auto;
         filter: drop-shadow(0 0 20px #00509444);
       }
+      /*arabayı sağa it çevreyi parlat*/
+
       .team-hero-text h1 {
         font-size: 26px;
         color: white;
@@ -67,6 +76,7 @@
         font-size: 12px;
         margin-bottom: 12px;
       }
+
       .team-tags {
         display: flex;
         gap: 8px;
@@ -80,11 +90,15 @@
         border-radius: 20px;
         font-size: 11px;
       }
+      /*etiket düzenleme arka planlama yuvarlama*/
+
       .team-page-content {
         max-width: 1100px;
         margin: 0 auto;
         padding: 40px;
       }
+      /*sayfanın kalanı*/
+
       .team-grid {
         display: grid;
         grid-template-columns: 2fr 1fr;
@@ -95,6 +109,8 @@
           grid-template-columns: 1fr;
         }
       }
+      /*sol sütuna ik kat tarihçe sezon bilgisi vs*/
+
       .info-card {
         background: #1a1a1a;
         border-radius: 12px;
@@ -109,6 +125,8 @@
         text-transform: uppercase;
         letter-spacing: 1px;
       }
+      /*kartların düzeni stili*/
+
       .stat-row {
         display: flex;
         justify-content: space-between;
@@ -120,18 +138,27 @@
       .stat-row:last-child {
         border-bottom: none;
       }
+
+      /*istatistik satırları etiket sol değer sağ çizgi yok*/
+
       .stat-label {
         color: #666;
       }
+      /*açıklama soldaki gri*/
+
       .stat-value {
         color: white;
         font-weight: bold;
       }
+      /*soldaki değer*/
+
       .season-stat-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
       }
+      /*sıralana puan vs 2 sütunlu grid*/
+
       .season-stat-box {
         background: #111;
         border-radius: 8px;
@@ -139,6 +166,8 @@
         text-align: center;
         border: 1px solid #222;
       }
+      /*yerleştir*/
+
       .season-stat-box .big-num {
         font-size: 28px;
         font-weight: bold;
@@ -151,6 +180,8 @@
         margin-top: 4px;
         display: block;
       }
+      /*açıklama ve sayılar*/
+
       .driver-card {
         background: #111;
         border-radius: 10px;
@@ -162,10 +193,14 @@
         border: 1px solid #222;
         transition: 0.2s;
       }
+      /*sürücü kartı numara bilgi diz */
+
       .driver-card:hover {
         border-color: #00d2be44;
         background: #1a1a1a;
       }
+      /*parlat*/
+
       .driver-number {
         font-size: 28px;
         font-weight: bold;
@@ -200,10 +235,13 @@
           opacity: 1;
         }
       }
+      /*Veri yüklenirken gösterilen animasyonlu placeholder*/
+
       .history-timeline {
         position: relative;
         padding-left: 20px;
       }
+      /*solda boşluk*/
       .history-timeline::before {
         content: "";
         position: absolute;
@@ -213,6 +251,8 @@
         width: 2px;
         background: linear-gradient(to bottom, #00d2be, transparent);
       }
+      /*solan çizgi*/
+
       .timeline-item {
         position: relative;
         padding: 0 0 20px 20px;
@@ -229,15 +269,19 @@
         background: #00d2be;
         border: 2px solid #0f0f0f;
       }
+      /*her olay yanına nokta*/
+
       .timeline-year {
         color: #00d2be;
         font-weight: bold;
         margin-bottom: 2px;
       }
+      /*yıl yazısı*/
       .timeline-desc {
         color: #aaa;
         line-height: 1.5;
       }
+      /*açıklama timeline*/
       .spec-note {
         background: #111;
         border-left: 3px solid #00d2be;
@@ -249,6 +293,8 @@
         margin-top: 12px;
         font-style: italic;
       }
+      /*alıntı takım üyesi font*/
+
       .standings-row {
         display: flex;
         align-items: center;
@@ -257,9 +303,13 @@
         border-bottom: 1px solid #1e1e1e;
         font-size: 12px;
       }
+      /*geçmiş sezon satırları*/
+
       .standings-row:last-child {
         border-bottom: none;
       }
+      /*son satır alt çizgi kaldır*/
+
       .s-pos {
         color: gold;
         font-weight: bold;
@@ -295,101 +345,46 @@
               <a class="dropdown-item" href="team-mercedes.html">
                 <div class="team-dot" style="background: #00d2be"></div>
                 <span>Mercedes-AMG Petronas</span>
-                <img
-                  src="logo-mercedes.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-ferrari.html">
                 <div class="team-dot" style="background: #dc0000"></div>
                 <span>Scuderia Ferrari</span>
-                <img
-                  src="logo-ferrari.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-mclaren.html">
                 <div class="team-dot" style="background: #ff8000"></div>
                 <span>McLaren</span>
-                <img
-                  src="logo-mclaren.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-redbull.html">
                 <div class="team-dot" style="background: #3671c6"></div>
                 <span>Red Bull Racing</span>
-                <img
-                  src="logo-redbull.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-williams.html">
                 <div class="team-dot" style="background: #005aff"></div>
                 <span>Williams</span>
-                <img
-                  src="logo-williams.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-astonmartin.html">
                 <div class="team-dot" style="background: #006f62"></div>
                 <span>Aston Martin</span>
-                <img
-                  src="logo-astonmartin.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-alpine.html">
                 <div class="team-dot" style="background: #0090ff"></div>
                 <span>Alpine</span>
-                <img
-                  src="logo-alpine.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-haas.html">
                 <div class="team-dot" style="background: #b6babd"></div>
                 <span>Haas</span>
-                <img
-                  src="logo-haas.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-racingbulls.html">
                 <div class="team-dot" style="background: #6692ff"></div>
                 <span>Racing Bulls</span>
-                <img
-                  src="logo-racingbulls.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-audi.html">
                 <div class="team-dot" style="background: #c92d4b"></div>
                 <span>Audi</span>
-                <img
-                  src="logo-audi.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-cadillac.html">
                 <div class="team-dot" style="background: #cc0000"></div>
                 <span>Cadillac</span>
-                <img
-                  src="logo-cadillac.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
             </div>
           </li>
@@ -398,6 +393,7 @@
       </nav>
     </header>
 
+    <!--banner divleri -->
     <div class="team-hero">
       <div class="team-hero-inner">
         <div class="team-logo-circle">
@@ -422,7 +418,7 @@
 
     <div class="team-page-content">
       <div class="team-grid">
-        <!-- SOL -->
+        <!-- Soldaki itemleri bölüyor -->
         <div>
           <!-- 2026 Anlık Durum -->
           <div class="info-card">
@@ -550,7 +546,7 @@
           </div>
         </div>
 
-        <!-- SAĞ -->
+        <!-- Sağ sütun elemanları -->
         <div>
           <!-- Sürücüler -->
           <div class="info-card">
@@ -622,7 +618,7 @@
     <footer><p>© 2026 F1 HUB — Eğitim amaçlı</p></footer>
 
     <script>
-      const CONSTRUCTOR_ID = "mercedes";
+      const CONSTRUCTOR_ID = "mercedes"; //takım kimliği
       const BASE = "https://api.jolpi.ca/ergast/f1";
 
       async function loadAll() {
@@ -630,18 +626,21 @@
           const [currentRes, driversRes] = await Promise.all([
             fetch(`${BASE}/current/constructorStandings.json`),
             fetch(`${BASE}/2026/constructors/${CONSTRUCTOR_ID}/drivers.json`),
+
+            //anlık sürücü ve takım verileri
           ]);
 
           const [currentData, driversData] = await Promise.all([
             currentRes.json(),
             driversRes.json(),
           ]);
+          //jsona çevirme
 
           // 2026 anlık durum
           const currentList =
-            currentData.MRData.StandingsTable.StandingsLists[0];
+            currentData.MRData.StandingsTable.StandingsLists[0]; //o anki sezon sıralama
           const teamStanding = currentList?.ConstructorStandings?.find(
-            (c) => c.Constructor.constructorId === CONSTRUCTOR_ID,
+            (c) => c.Constructor.constructorId === CONSTRUCTOR_ID, //yoksa hata verme undefined dön
           );
 
           if (teamStanding) {
@@ -650,7 +649,7 @@
         <div class="season-stat-box"><span class="big-num">${teamStanding.wins}</span><span class="small-label">Galibiyet</span></div>
         <div class="season-stat-box"><span class="big-num">${teamStanding.position}.</span><span class="small-label">Sıralama</span></div>
         <div class="season-stat-box"><span class="big-num">${currentList.round}</span><span class="small-label">Yarış</span></div>
-      `;
+      `; //veri geldiyse istatistikerli göster
           }
 
           // Hero tags
@@ -659,6 +658,7 @@
       <span class="tag">${teamStanding ? teamStanding.position + ". Sıra (2026)" : ""}</span>
       <span class="tag">Motor: Mercedes M17</span>
     `;
+          //pozisyon sıra vs etiketler
 
           // Geçmiş sezonlar — yıl yıl çekmek yerine sabit veri
           const pastSeasons = [

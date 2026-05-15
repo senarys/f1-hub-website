@@ -7,27 +7,57 @@
   font-size: 13px;
   font-weight: bold;
 }
+/*Evrensel font ve element öz sıfırlaması yaptın */
 
-/* BODY */
 body {
   background: #0f0f0f;
   color: white;
 }
+/*body etiketinde sayfa arka planını sıfırladın*/
 
-/* NAVBAR */
 .navbar {
-  display: flex;
+  display: flex; /*flexle logo ve menüyü yan yana dizdi*/
   justify-content: space-between;
   align-items: center;
   background: #111;
   padding: 15px 30px;
   border-bottom: 2px solid red;
 }
+/*header içindeki navbar için flexbox ile logo sola menü sağa*/
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+/*navbar elemanlarını şekillendirir nokta kaldırma yan yana dizme*/
+
+.menu li a {
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+/*link altındaki çizgiler link rengi renk değişim süresi*/
+
+.menu li a:hover {
+  color: red;
+}
+/*link rengi mouse ile kırmızı*/
+.logo {
+  font-size: 20px;
+  color: red;
+}
+/*f1 hub logosunu stillendirdik*/
 
 .container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+  flex-wrap: wrap;
   position: relative;
   overflow: hidden;
-}
+} /*index maindeki container içindir*/
 
 .container::before {
   content: "";
@@ -38,35 +68,14 @@ body {
   z-index: 0;
   transform: scaleX(-1);
 }
+/*gifi arka plana ekler yalandan container*/
 
 .container * {
   position: relative;
   z-index: 0;
 }
+/*gif arka planda kalırken yazıları sabit tutarız*/
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: red;
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.menu li a {
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
-}
-
-.menu li a:hover {
-  color: red;
-}
-
-/* HERO */
 .hero {
   text-align: center;
   padding: 60px 20px;
@@ -74,6 +83,7 @@ body {
   position: relative;
   overflow: hidden;
 }
+/*container üzerindeki içeriği ortalar*/
 
 .hero::before {
   content: "";
@@ -84,22 +94,14 @@ body {
   z-index: 0;
   transform: scaleX(-1);
 }
+/*container before mantığı*/
 
 .hero * {
   position: relative;
   z-index: 1;
 }
+/* genel sabitleme*/
 
-/* CONTAINER */
-.container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px;
-  flex-wrap: wrap;
-}
-
-/* CARD */
 .card {
   background: #1c1c1c;
   opacity: 0.75;
@@ -109,10 +111,180 @@ body {
   border-left: 4px solid red;
   transition: 0.3s;
 }
+/*containerdaki yan kartlar için*/
 
 .card:hover {
   transform: scale(1.05);
 }
+/*kart kaldırma*/
+
+.form-section {
+  background: linear-gradient(135deg, #1a0000, #111);
+  padding: 40px 20px;
+  border-top: 2px solid red;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+/*Koyu kırmızıdan siyaha doğru 135 derece açılı gradient arkaplan.
+Üstte 2px kırmızı çizgi.
+Flexbox ile içeriği yatayda ortaladın
+ekran daralınca alta geç wrap*/
+
+.form-section h2 {
+  font-size: 12px;
+  white-space: nowrap;
+}
+/*bize ulaşın*/
+
+.form-section form {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  max-width: 700px;
+}
+/*form da flexbox yatay sıralama geniş yayılmama*/
+
+.form-section input,
+.form-section textarea {
+  flex: 1 1 100%; /*her  input boşuğu eşit aldı*/
+  min-width: 140px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  font-size: 13px;
+  background: #1a1a1a;
+  color: white;
+  min-height: 80px;
+}
+
+.form-section input::placeholder,
+.form-section textarea::placeholder {
+  color: #888;
+}
+/*iç yazı rengi*/
+
+.form-section button {
+  background: black;
+  color: white;
+  padding: 10px 24px;
+  border: 2px solid red;
+  cursor: pointer;
+  transition: 0.2s;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+/*gönder butonu özlk.*/
+
+.form-section button:hover {
+  background: red;
+  color: black;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  margin-top: 40px;
+}
+
+.has-dropdown {
+  position: relative; /*dropdownı link altına hizalama*/
+}
+
+.has-dropdown .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-top: 2px solid red;
+  min-width: 240px;
+  z-index: 999; /*her şeyi arkalatacak*/
+  padding: 6px 0;
+  border-radius: 0 0 8px 8px;
+}
+/*açılır liste sistemi kurdu*/
+
+.has-dropdown:hover .dropdown {
+  display: block;
+}
+/*mouse ile görünürlük*/
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  text-decoration: none;
+  color: white;
+  transition: 0.15s;
+  font-size: 12px;
+}
+
+.dropdown-item:hover {
+  background: #1a1a1a;
+  opacity: 1;
+}
+
+.team-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/*tracks için*/
+.track-card {
+  width: 260px;
+  background: #1a1a1a;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 4px solid red;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.track-card:hover {
+  transform: scale(1.05);
+  background: #222;
+}
+
+.track-card h3 {
+  color: rgb(222, 200, 70);
+}
+
+.tracks-page {
+  padding: 40px;
+}
+
+.track-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.track-detail {
+  margin-top: 30px;
+  padding: 20px;
+  background: #111;
+  border-radius: 10px;
+  border: 1px solid red;
+  width: 100%;
+}
+
+/*champions*/
 
 .champion-list {
   display: flex;
@@ -122,17 +294,18 @@ body {
   position: relative;
   overflow: hidden;
 }
+/*arka plan görsel taşma yapmasın diye*/
 
 .champion-list::before {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: 0; /*tüm ekranı kaplat*/
   background: url("history.gif") center/cover no-repeat;
   opacity: 0.15;
   z-index: 0;
 }
 
-.champion-list > * {
+.champion-list * {
   position: relative;
   z-index: 1;
 }
@@ -165,146 +338,19 @@ body {
   opacity: 0.8;
 }
 
-.form-section {
-  background: linear-gradient(135deg, #1a0000, #111);
-  padding: 40px 20px;
-  border-top: 2px solid red;
-  color: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-}
-
-.form-section h2 {
-  font-size: 12px;
-  white-space: nowrap;
-}
-
-.form-section form {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 100%;
-  max-width: 700px;
-}
-
-.form-section input,
-.form-section textarea {
-  flex: 1;
-  min-width: 140px;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  outline: none;
-  font-size: 13px;
-  background: #1a1a1a;
-  color: white;
-}
-
-.form-section input::placeholder,
-.form-section textarea::placeholder {
-  color: #888;
-}
-
-.form-section textarea {
-  flex: 1 1 100%;
-  padding: 10px 14px;
-  border: none;
-  border-radius: 6px;
-  outline: none;
-  font-size: 13px;
-  min-height: 80px;
-  resize: vertical;
-}
-
-.form-section button {
-  background: black;
-  color: white;
-  padding: 10px 24px;
-  border: 2px solid red;
-  cursor: pointer;
-  transition: 0.2s;
-  border-radius: 6px;
-  font-size: 13px;
-  white-space: nowrap;
-}
-
-.form-section button:hover {
-  background: red;
-  color: black;
-}
-
-.track-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.track-card {
-  width: 260px;
-  background: #1a1a1a;
-  padding: 15px;
-  border-radius: 10px;
-  border-left: 4px solid red;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.track-card:hover {
-  transform: scale(1.05);
-  background: #222;
-}
-
-.track-card h3 {
-  color: rgb(222, 200, 70);
-}
-
-.track-detail {
-  margin-top: 30px;
-  padding: 20px;
-  background: #111;
-  border-radius: 10px;
-  border: 1px solid red;
-}
-.tracks-page {
-  padding: 40px;
-}
-
-/* liste */
-.track-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-/*DETAY PANEL*/
-.track-detail {
-  margin-top: 30px;
-  padding: 20px;
-  background: #111;
-  border-radius: 10px;
-  border: 1px solid red;
-  width: 100%;
-}
-
 .hidden {
   display: none;
 }
 
-/* STANDINGS*/
+/* grid için */
+
 .standings-page {
   padding: 40px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 🔥 ortalar */
+  align-items: center;
 }
+/*içerik sütun,yatayda ortalı*/
 
 .controls {
   display: flex;
@@ -313,6 +359,7 @@ body {
   gap: 12px;
   margin-bottom: 28px;
 }
+/*menüyü küçült vs.*/
 
 .year-select {
   background: #111;
@@ -325,10 +372,10 @@ body {
   cursor: pointer;
   outline: none;
   appearance: none;
-  -webkit-appearance: none;
+  -webkit-appearance: none; /*varsayılan ikonu kaldır*/
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='red' d='M0 0l6 8 6-8z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 12px center;
+  background-position: right 12px center; /*ikon yazıya binmez*/
   padding-right: 36px;
 }
 
@@ -336,6 +383,7 @@ body {
   display: flex;
   gap: 8px;
 }
+/*yan yana sekme butonları*/
 
 .tab-btn {
   background: #1a1a1a;
@@ -352,10 +400,13 @@ body {
   background: #1f0000;
   color: white;
 }
+/*aktif buton rengi değişssin diye*/
+
 .tab-btn:hover:not(.active) {
   border-color: #555;
   color: white;
 }
+/*aktif olmayan buton rengi değişssin diye*/
 
 .season-label {
   color: red;
@@ -374,9 +425,10 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+/*kartları diz,ortala,alta geç darsa*/
 
 .podium-card {
-  flex: 1;
+  flex: 1; /*kartlar eşit genişlikte büyüt*/
   min-width: 180px;
   max-width: 260px;
   background: #161616;
@@ -393,14 +445,16 @@ body {
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent);
   pointer-events: none;
 }
+/*dekorasyon parlaklık*/
+
 .podium-card.p1 {
   border-top-color: gold;
 }
 .podium-card.p2 {
-  border-top-color: #c0c0c0;
+  border-top-color: #848383;
 }
 .podium-card.p3 {
-  border-top-color: #cd7f32;
+  border-top-color: #a55c13;
 }
 
 .podium-pos {
@@ -412,6 +466,8 @@ body {
   right: 14px;
   line-height: 1;
 }
+/*köşdeki sıralama*/
+
 .p1 .podium-pos {
   color: gold;
   opacity: 0.25;
@@ -424,6 +480,7 @@ body {
   color: #cd7f32;
   opacity: 0.25;
 }
+/*sıra numaraları*/
 
 .podium-medal {
   font-size: 22px;
@@ -434,11 +491,15 @@ body {
   font-weight: bold;
   margin-bottom: 4px;
 }
+/*sürücü adları*/
+
 .podium-team {
   font-size: 12px;
   color: #888;
   margin-bottom: 8px;
 }
+/*takım adları*/
+
 .podium-pts {
   display: inline-block;
   background: #2a0000;
@@ -449,11 +510,12 @@ body {
   font-size: 13px;
   font-weight: bold;
 }
+/*puanın renk ayarı*/
 
 .standings-table {
   width: 100%;
   max-width: 820px;
-  border-collapse: collapse;
+  border-collapse: collapse; /*hücre borderleri birleşir, çift çizgi yok*/
   margin: 0 auto;
   table-layout: fixed;
 }
@@ -465,15 +527,20 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+/*tablo üstü kırmızı çizgi*/
+
 .standings-table td {
   padding: 11px 14px;
   border-bottom: 1px solid #1e1e1e;
   font-size: 14px;
   transition: background 0.15s;
 }
+/*tablo altı çizgi*/
+
 .standings-table tbody tr:hover td {
   background: #1a1a1a;
 }
+/*imleçle aydınlatma*/
 
 .pos-num {
   font-weight: bold;
@@ -489,6 +556,7 @@ body {
 .pos-3 .pos-num {
   color: #cd7f32;
 }
+/*sıra numarası hücre blokları ilk üç renkli*/
 
 .points-badge {
   background: #1a0000;
@@ -499,25 +567,34 @@ body {
   font-weight: bold;
   font-size: 13px;
 }
+/*puanlar*/
+
 .nat {
   color: #666;
   font-size: 12px;
 }
+/*milliyet sütunu*/
+
 .wins-col {
   color: #aaa;
 }
+/*galibiyet sütunu*/
+
 .section-title {
   font-size: 22px;
   font-weight: bold;
   margin-bottom: 20px;
 }
-/* CONTACT PAGE */
+/*Sezon Sıralamaları başlığı */
+
+/*contact html için*/
 
 .contact-page {
   padding: 40px;
   max-width: 1100px;
   margin: 0 auto;
 }
+/*genel sayfa düzen*/
 
 .contact-grid {
   display: flex;
@@ -525,11 +602,13 @@ body {
   flex-wrap: wrap;
   margin-top: 30px;
 }
+/*form ve kart düzeni*/
 
 .contact-form-section {
   flex: 2;
   min-width: 300px;
 }
+/*form divi kartlardan 2 kat büyük flex2*/
 
 .contact-info-section {
   flex: 1;
@@ -538,6 +617,7 @@ body {
   flex-direction: column;
   gap: 20px;
 }
+/*bilgi kartı divi*/
 
 .contact-card {
   background: #1a1a1a;
@@ -585,6 +665,7 @@ body {
   flex-direction: column;
   gap: 14px;
 }
+/*büyük iletişim formuna dış kap*/
 
 .big-form h2 {
   color: white;
@@ -596,6 +677,12 @@ body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+}
+/*ad soyad yan yana*/
+
+.form-row input {
+  flex: 1;
+  min-width: 120px;
 }
 
 .big-form input,
@@ -612,21 +699,18 @@ body {
   outline: none;
   transition: border 0.2s;
 }
+/*tüm form elemanları aynı stil*/
 
 .big-form input:focus,
 .big-form textarea:focus,
 .big-form select:focus {
   border-color: red;
 }
+/*tık kırmızısı*/
 
 .big-form input::placeholder,
 .big-form textarea::placeholder {
   color: #555;
-}
-
-.form-row input {
-  flex: 1;
-  min-width: 120px;
 }
 
 .big-form textarea {
@@ -637,6 +721,7 @@ body {
 .big-form select option {
   background: #111;
 }
+/*sorun selection arka plan*/
 
 .big-form button {
   background: black;
@@ -649,6 +734,7 @@ body {
   font-family: "Michroma", sans-serif;
   transition: 0.2s;
 }
+/*gönder butonu*/
 
 .big-form button:hover {
   background: red;
@@ -656,7 +742,7 @@ body {
 }
 
 .image-upload-area {
-  border: 2px dashed #333;
+  border: 2px dashed #333; /*kesik kenar*/
   border-radius: 8px;
   padding: 20px;
   text-align: center;
@@ -686,6 +772,7 @@ body {
   gap: 8px;
   margin-top: 10px;
 }
+/*yükleme ekranında görseller yan yana*/
 
 .image-preview img {
   width: 80px;
@@ -704,67 +791,4 @@ body {
   border-radius: 6px;
   font-size: 12px;
   text-align: center;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #111;
-  margin-top: 40px;
-}
-.has-dropdown {
-  position: relative;
-}
-
-.has-dropdown .dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: #111;
-  border: 1px solid #2a2a2a;
-  border-top: 2px solid red;
-  min-width: 240px;
-  z-index: 999;
-  padding: 6px 0;
-  border-radius: 0 0 8px 8px;
-}
-
-.has-dropdown:hover .dropdown {
-  display: block;
-}
-
-.dropdown-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 9px 16px;
-  text-decoration: none;
-  color: white;
-  transition: 0.15s;
-  font-size: 12px;
-}
-
-.dropdown-item:hover {
-  background: #1a1a1a;
-}
-
-.team-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.dropdown-logo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  margin-left: auto;
-  opacity: 0.85;
-}
-
-.dropdown-item:hover .dropdown-logo {
-  opacity: 1;
 }

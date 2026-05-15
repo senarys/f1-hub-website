@@ -1,5 +1,5 @@
-const list = document.getElementById("champions");
-const currentYear = new Date().getFullYear();
+const list = document.getElementById("champions"); //htmlden championu bulup listeye attı
+const currentYear = new Date().getFullYear(); //sistem tarihi
 
 // API'de standings verisi olmayan yıllar için manuel veri
 const historicChampions = {
@@ -39,24 +39,32 @@ const historicChampions = {
 };
 
 async function getChampions() {
-  list.innerHTML = `<div style="color:#aaa;padding:20px;">⏳ Şampiyonlar yükleniyor...</div>`;
+  list.innerHTML = `<div style="color:#aaa;padding:20px;">Şampiyonlar yükleniyor...</div>`;
+  //sayfa gelmeden boş ekran görmemek içn
 
   try {
     const years = [];
     for (let y = currentYear; y >= 1950; y--) years.push(y);
+    //50 den bu yana tüm yılları year consta attı
 
-    const BATCH = 10;
+    const BATCH = 10; //10 ar 10 ar istek atacak
     const allChampions = [];
 
     for (let i = 0; i < years.length; i += BATCH) {
       const batch = years.slice(i, i + BATCH);
 
       const results = await Promise.all(
-        batch.map((year) =>
-          fetch(`https://api.jolpi.ca/ergast/f1/${year}/driverStandings/1.json`)
-            .then((r) => (r.ok ? r.json() : null))
-            .catch(() => null),
+        //10 isteği aynı anda attı gelene kadar bekler
+        batch.map(
+          (year) =>
+            fetch(
+              `https://api.jolpi.ca/ergast/f1/${year}/driverStandings/1.json`,
+            )
+              .then((r) => (r.ok ? r.json() : null))
+              .catch(() => null), //fetch tamamen patlarsa null dön
         ),
+
+        //map ile her batchteki yıllar için fetch istek atar
       );
 
       results.forEach((data, idx) => {
@@ -65,7 +73,7 @@ async function getChampions() {
         // API'den veri geldiyse kullan
         if (data) {
           try {
-            const lists = data.MRData.StandingsTable.StandingsLists;
+            const lists = data.MRData.StandingsTable.StandingsLists; //liste elemanının ergasttaki karşılığı
             if (lists && lists.length > 0) {
               const standing = lists[0].DriverStandings[0];
               allChampions.push({
@@ -77,7 +85,7 @@ async function getChampions() {
               return;
             }
           } catch (e) {
-            /* devam et, fallback'e düş */
+            // devam et, fallback'e düş
           }
         }
 
@@ -94,34 +102,37 @@ async function getChampions() {
         // Ne API'den ne manual'dan veri yoksa o yılı gösterme
       });
 
-      renderCards(allChampions);
+      renderCards(allChampions); //her batchte 1 deste kart çizimi
     }
 
     if (allChampions.length === 0) {
       list.innerHTML = `<p style="color:red;">⚠️ Hiç veri alınamadı. Lütfen sayfayı yenileyin.</p>`;
     }
   } catch (err) {
-    console.error(err);
+    console.error(err); //hatayı dev consolea yaz
     list.innerHTML = `<p style="color:red;">⚠️ Beklenmeyen bir hata oluştu.</p>`;
   }
 }
 
 function renderCards(champions) {
-  const sorted = [...champions].sort((a, b) => b.year - a.year);
-  list.innerHTML = "";
+  const sorted = [...champions].sort((a, b) => b.year - a.year); //orijinali bozmadı kopyayı aldı
+  list.innerHTML = ""; //her batchte kart çağrılıyor üst üste binmesin diye div temizledi
 
   sorted.forEach(({ year, driver, constructor, isOngoing }) => {
     const card = document.createElement("div");
     card.classList.add("champion-card");
 
+    //yeni div, içine champ cardı atıyor
+
     if (isOngoing) {
+      //yıl güncelse sezon devam ediyor ekler
       card.innerHTML = `
         <div class="champion-year">🏆 ${year}</div>
         <div class="champion-driver">
-          🧑‍✈️ ${driver.givenName} ${driver.familyName}
+          ${driver.givenName} ${driver.familyName}
           <span style="font-size:11px;color:#f90;margin-left:6px;">⏳ Sezon devam ediyor</span>
         </div>
-        <div class="champion-team">🔧 ${constructor ? constructor.name : "—"}</div>
+        <div class="champion-team"> ${constructor ? constructor.name : "—"}</div>
       `;
     } else {
       card.innerHTML = `
@@ -131,7 +142,7 @@ function renderCards(champions) {
       `;
     }
 
-    list.appendChild(card);
+    list.appendChild(card); //kartı id=champe ekler
   });
 }
 

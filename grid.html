@@ -21,101 +21,46 @@
               <a class="dropdown-item" href="team-mercedes.html">
                 <div class="team-dot" style="background: #00d2be"></div>
                 <span>Mercedes-AMG Petronas</span>
-                <img
-                  src="logo-mercedes.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-ferrari.html">
                 <div class="team-dot" style="background: #dc0000"></div>
                 <span>Scuderia Ferrari</span>
-                <img
-                  src="logo-ferrari.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-mclaren.html">
                 <div class="team-dot" style="background: #ff8000"></div>
                 <span>McLaren</span>
-                <img
-                  src="logo-mclaren.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-redbull.html">
                 <div class="team-dot" style="background: #3671c6"></div>
                 <span>Red Bull Racing</span>
-                <img
-                  src="logo-redbull.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-williams.html">
                 <div class="team-dot" style="background: #005aff"></div>
                 <span>Williams</span>
-                <img
-                  src="logo-williams.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-astonmartin.html">
                 <div class="team-dot" style="background: #006f62"></div>
                 <span>Aston Martin</span>
-                <img
-                  src="logo-astonmartin.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-alpine.html">
                 <div class="team-dot" style="background: #0090ff"></div>
                 <span>Alpine</span>
-                <img
-                  src="logo-alpine.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-haas.html">
                 <div class="team-dot" style="background: #b6babd"></div>
                 <span>Haas</span>
-                <img
-                  src="logo-haas.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-racingbulls.html">
                 <div class="team-dot" style="background: #6692ff"></div>
                 <span>Racing Bulls</span>
-                <img
-                  src="logo-racingbulls.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-audi.html">
                 <div class="team-dot" style="background: #c92d4b"></div>
                 <span>Audi</span>
-                <img
-                  src="logo-audi.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
               <a class="dropdown-item" href="team-cadillac.html">
                 <div class="team-dot" style="background: #cc0000"></div>
                 <span>Cadillac</span>
-                <img
-                  src="logo-cadillac.png"
-                  class="dropdown-logo"
-                  onerror="this.style.display = 'none'"
-                />
               </a>
             </div>
           </li>
@@ -128,6 +73,7 @@
       <div class="section-title">Sezon Sıralamaları</div>
 
       <div class="controls">
+        <!-- Yıl seçici  -->
         <select
           id="seasonSelect"
           class="year-select"
@@ -141,6 +87,7 @@
           >
             Sürücüler
           </button>
+          <!--sürücü butonu switchle açılır-->
           <button
             class="tab-btn"
             id="tab-constructors"
@@ -148,8 +95,9 @@
           >
             Takımlar
           </button>
+          <!--takım butonu switchle açılır-->
         </div>
-        <span class="season-label" id="seasonLabel">2025 Sezonu</span>
+        <span class="season-label" id="seasonLabel"></span>
       </div>
 
       <div id="loading-msg" style="color: #aaa; padding: 20px 0">
@@ -157,7 +105,9 @@
       </div>
 
       <div id="standings-container" style="display: none">
+        <!--dış kutu-->>
         <div class="podium" id="podium"></div>
+        <!--ilk üç kartları buraya render fonk ile dolacak-->>
         <table class="standings-table">
           <thead id="table-head"></thead>
           <tbody id="table-body"></tbody>
@@ -170,51 +120,55 @@
     </footer>
 
     <script>
-      let currentTab = "drivers";
+      let currentTab = "drivers"; //default aktif sekme sürücü
       let driverData = [];
       let constructorData = [];
       const MEDALS = ["🥇", "🥈", "🥉"];
 
-      const sel = document.getElementById("seasonSelect");
+      const sel = document.getElementById("seasonSelect"); // boş selecti htmlden çek
       for (let y = new Date().getFullYear(); y >= 1950; y--) {
-        const opt = document.createElement("option");
+        const opt = document.createElement("option"); //her yıl için option atadı dropdown için
         opt.value = y;
         opt.textContent = y;
-        sel.appendChild(opt);
+        sel.appendChild(opt); //artık menüde görünür
       }
 
       function switchTab(tab) {
-        currentTab = tab;
+        currentTab = tab; //aktif sekme güncelleme
         document
           .getElementById("tab-drivers")
-          .classList.toggle("active", tab === "drivers");
+          .classList.toggle("active", tab === "drivers"); //toggle oldugu için biri true ise diğeri false
         document
           .getElementById("tab-constructors")
           .classList.toggle("active", tab === "constructors");
-        renderAll();
+        //iki ayrı tab ekledi
+        renderAll(); //sekme değişince yeni tabloyu render edecek
       }
 
       async function loadStandings() {
-        const year = document.getElementById("seasonSelect").value;
-        document.getElementById("seasonLabel").textContent = `${year} Sezonu`;
-        const msg = document.getElementById("loading-msg");
-        const container = document.getElementById("standings-container");
+        const year = document.getElementById("seasonSelect").value; //seassel seçili yıl val seçili option
+        document.getElementById("seasonLabel").textContent = `${year} Sezonu`; //etiket güncelle
+        const msg = document.getElementById("loading-msg"); //mesaj hazırladı
+        const container = document.getElementById("standings-container"); //containera mesaj veya içerik atacak
         msg.style.display = "block";
         msg.textContent = " Yükleniyor...";
-        container.style.display = "none";
+        container.style.display = "none"; //default göstermemeye ayarlı
         try {
-          const [dRes, cRes] = await Promise.all([
-            fetch(
-              `https://api.jolpi.ca/ergast/f1/${year}/driverStandings.json`,
-            ),
-            fetch(
-              `https://api.jolpi.ca/ergast/f1/${year}/constructorStandings.json`,
-            ),
-          ]);
+          const [dRes, cRes] = await Promise.all(
+            //aynı anda iki istek driver constructor response
+            [
+              fetch(
+                `https://api.jolpi.ca/ergast/f1/${year}/driverStandings.json`,
+              ),
+              fetch(
+                `https://api.jolpi.ca/ergast/f1/${year}/constructorStandings.json`,
+              ),
+            ],
+          );
           if (!dRes.ok || !cRes.ok) throw new Error();
-          const dData = await dRes.json();
+          const dData = await dRes.json(); //cevapları json paketle bitene kadar bekle
           const cData = await cRes.json();
-          const dList = dData.MRData.StandingsTable.StandingsLists[0];
+          const dList = dData.MRData.StandingsTable.StandingsLists[0]; //apiden liste geldiyse ata
           const cList = cData.MRData.StandingsTable.StandingsLists[0];
           driverData = dList ? dList.DriverStandings : [];
           constructorData = cList ? cList.ConstructorStandings : [];
@@ -232,18 +186,23 @@
       }
 
       function renderPodium() {
-        const data = currentTab === "drivers" ? driverData : constructorData;
-        document.getElementById("podium").innerHTML = data
-          .slice(0, 3)
-          .map((item, i) => {
-            const isDriver = currentTab === "drivers";
-            const name = isDriver
-              ? `${item.Driver.givenName} ${item.Driver.familyName}`
-              : item.Constructor.name;
-            const sub = isDriver
-              ? item.Constructors[0]?.name || "—"
-              : item.Constructor.nationality;
-            return `
+        const data = currentTab === "drivers" ? driverData : constructorData; //aktif sekmeye göre veri seç
+        document.getElementById("podium").innerHTML = data //htmli doldur
+          .slice(0, 3) //drivers veya constructorstan ilk üç eleman
+          .map(
+            (
+              item,
+              i, //her elemana bir kart
+            ) => {
+              const isDriver = currentTab === "drivers";
+              const name = isDriver
+                ? `${item.Driver.givenName} ${item.Driver.familyName}`
+                : item.Constructor.name;
+              const sub = isDriver
+                ? item.Constructors[0]?.name || "—"
+                : item.Constructor.nationality;
+              //sürücü ise isim merge soyisim mmilliyet
+              return `
             <div class="podium-card p${i + 1}">
               <div class="podium-pos">${i + 1}</div>
               <div class="podium-medal">${MEDALS[i]}</div>
@@ -251,7 +210,8 @@
               <div class="podium-team">${sub}</div>
               <span class="podium-pts">${item.points} pts</span>
             </div>`;
-          })
+            },
+          )
           .join("");
       }
 
@@ -289,6 +249,7 @@
             .join("");
         }
       }
+      //üstteki işlemle aynı mantıkta tablo oluşturdun
 
       loadStandings();
     </script>
